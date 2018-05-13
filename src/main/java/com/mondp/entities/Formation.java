@@ -16,11 +16,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-//import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mondp.entities.enums.NiveauFormation;
 import com.mondp.entities.enums.Pays;
@@ -46,13 +47,16 @@ public class Formation implements Serializable{
 	@Column(name = "ID_FORMATION")
 	private Long idFormation; 
 	
+	
 	@Past
 	@Column(name="DATE_DEBUT_FORMATION", nullable = false)
 	@Temporal(value = TemporalType.DATE)
+	@JsonFormat(shape=JsonFormat.Shape.ANY, pattern="yyyy-MM-dd", timezone="UTC+2")
 	private Date dateDebut;
 	
 	@Column(name="DATE_FIN_FORMATION", nullable = false)
 	@Temporal(value = TemporalType.DATE)
+	@JsonFormat(shape=JsonFormat.Shape.ANY, pattern="yyyy-MM-dd", timezone="UTC+2")
 	private Date dateFin;
 	
 	@Column(name="LIBELLE_FORMATION", nullable = false)
@@ -82,7 +86,6 @@ public class Formation implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="ID_UTILISATEUR" , nullable = false, unique= false, foreignKey = @ForeignKey(name="FK_FORMATION_UTILISATEURS_ID_UTILISATEUR"))
 	@JsonIgnoreProperties(value={"nom", "prenom", "dateInscription", "civilite", "emailUtilisateur", "dateNaissance", "telephone", "motDePasseUtilisateur"})
-//	@Index(name="fk_utilisateur_id_Utilisateur")
 	private Utilisateur utilisateur;
 	
 }

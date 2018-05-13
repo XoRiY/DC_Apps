@@ -20,6 +20,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mondp.entities.enums.Pays;
 
@@ -47,10 +48,12 @@ public class Experience implements Serializable{
 	@Past
 	@Column(name="DATE_DEBUT_EXPERIENCE", nullable = false)
 	@Temporal(value = TemporalType.DATE)
+	@JsonFormat(shape=JsonFormat.Shape.ANY, pattern="yyyy-MM-dd", timezone="UTC+2")
 	private Date dateDebutExperience;
 	
 	@Column(name="DATE_FIN_EXPERIENCE", nullable = false)
 	@Temporal(value = TemporalType.DATE)
+	@JsonFormat(shape=JsonFormat.Shape.ANY, pattern="yyyy-MM-dd", timezone="UTC+2")
 	private Date dateFinExperience;
 	
 	@Column(name="LIBELLE_POSTE", nullable = false)
