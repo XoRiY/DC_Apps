@@ -62,18 +62,17 @@ public class MondpApplication implements CommandLineRunner {
 
 				String nom = "KERDOUD" + aleatoire;
 				String prenom = "tahar" + aleatoire2;
-
 				String email = nom + prenom + "@gmail.com";
 				String password = prenom + nom;
 				String telephone = "0" + aleatoire + "" + aleatoire2 + "0";
 
+				
 				/*--------------- Utilisateur ---------------*/
 
 				Calendar c = Calendar.getInstance();
 				c.set(2000, 10, 12);
 				Utilisateur utilisateur = new Utilisateur();
-				// (telephone, nom, prenom, civilite, dateInscriprtion,
-				// dateNaissance, adresses)
+
 				utilisateur.setCivilite(M);
 				utilisateur.setEmailUtilisateur(email);
 				utilisateur.setNom(nom);
@@ -84,6 +83,7 @@ public class MondpApplication implements CommandLineRunner {
 				utilisateur.setDateNaissance(new Date("1987/11/27"));
 				utilisateurRepository.save(utilisateur);
 
+				
 				/*--------------- Adresse ---------------*/
 
 				Adresse adresse = new Adresse();
@@ -94,11 +94,11 @@ public class MondpApplication implements CommandLineRunner {
 				adresse.setPays(FRANCE);
 				adresse.setTypeVoie(ABBAYE);
 				adresse.setUtilisateur(utilisateur);
-
 				adresseRepository.save(adresse);
 
 				for (int j = 0; j < 1; j++) {
 
+					
 					/*--------------- Formation ---------------*/
 
 					Formation f = new Formation();
