@@ -85,7 +85,6 @@ public class Formation implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="ID_UTILISATEUR" , nullable = false, unique= false, foreignKey = @ForeignKey(name="FK_FORMATION_UTILISATEURS_ID_UTILISATEUR"))
-	@JsonIgnoreProperties(value={"nom", "prenom", "dateInscription", "civilite", "emailUtilisateur", "dateNaissance", "telephone", "motDePasseUtilisateur"})
 	private Utilisateur utilisateur;
 	
 }

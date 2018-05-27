@@ -80,7 +80,6 @@ public class Adresse implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="ID_UTILISATEUR", nullable = false, unique= false, foreignKey = @ForeignKey(name="FK_ADRESSES_UTILISATEURS_ID_UTILISATEUR"))
-	@JsonIgnoreProperties(value={"nom", "prenom", "dateInscription", "civilite", "emailUtilisateur", "dateNaissance", "telephone", "motDePasseUtilisateur"})
 	private Utilisateur utilisateur;
 	
 }

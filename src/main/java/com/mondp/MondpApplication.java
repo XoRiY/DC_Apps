@@ -1,5 +1,6 @@
 package com.mondp;
 
+import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -45,7 +46,10 @@ public class MondpApplication implements CommandLineRunner {
 	AdresseRepository adresseRepository;
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(MondpApplication.class, args);
+		
+		tooString(Adresse.class);
 	}
 
 	@Override
@@ -55,7 +59,7 @@ public class MondpApplication implements CommandLineRunner {
 			int aleatoire;
 			int aleatoire2;
 
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 5; i++) {
 
 				aleatoire = ((int) (Math.random() * 1000));
 				aleatoire2 = ((int) (Math.random() * 1000));
@@ -88,11 +92,11 @@ public class MondpApplication implements CommandLineRunner {
 
 				Adresse adresse = new Adresse();
 				adresse.setCodePostal(33700);
-				adresse.setNomVoie("rue Brantome");
+				adresse.setNomVoie("Brantome");
 				adresse.setNumeroVoie(16);
 				adresse.setVille("Merignac");
 				adresse.setPays(FRANCE);
-				adresse.setTypeVoie(ABBAYE);
+				adresse.setTypeVoie(RUE);
 				adresse.setUtilisateur(utilisateur);
 				adresseRepository.save(adresse);
 
@@ -141,5 +145,23 @@ public class MondpApplication implements CommandLineRunner {
 			e.printStackTrace();
 		}
 	}
-	
+	public static String tooString(Class c ) {
+	    StringBuilder sb = new StringBuilder();
+	    try {
+	    	
+	     
+	        Method m[] = c.getDeclaredMethods();
+	        Object oo;
+
+	        for (int i = 0; i < m.length; i++)
+	            if (m[i].getName().startsWith("get")) {
+	                oo = m[i].invoke(c, null);
+	                sb.append(m[i].getName().substring(3) + ":"
+	                        + String.valueOf(oo) + "\n");
+	            }
+	    } catch (Throwable e) {
+	        System.err.println(e);
+	    }
+	    return sb.toString();
+	}
 }

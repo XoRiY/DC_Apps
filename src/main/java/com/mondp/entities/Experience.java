@@ -72,13 +72,11 @@ public class Experience implements Serializable{
 
 	@ManyToOne
 	@JoinColumn(name="ID_ENTREPRISE" , unique= false, foreignKey = @ForeignKey(name="FK_EXPREIENCE_ENTREPRISE_ID_ENTREPRISE"))
-	@JsonIgnoreProperties(value={"nomEntreprise", "villeEntreprise", "paysEntreprise"})
 	@NotNull //@NotBlank
 	private Entreprise entreprise;
 	
 	@ManyToOne
 	@JoinColumn(name="ID_UTILISATEUR" , nullable = false, unique= false, foreignKey = @ForeignKey(name="FK_EXPREIENCE_UTILISATEURS_ID_UTILISATEUR"))
-	@JsonIgnoreProperties(value={"nom", "prenom", "dateInscription", "civilite", "emailUtilisateur", "dateNaissance", "telephone", "motDePasseUtilisateur"})
 	private Utilisateur utilisateur;
 	
 }
