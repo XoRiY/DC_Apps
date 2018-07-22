@@ -1,6 +1,6 @@
 package com.mondp.entities.enums;
 
-public enum EnumCivilite {
+public enum EnumCivilite implements AA{
 	
 
 	
@@ -8,7 +8,7 @@ public enum EnumCivilite {
 	
 	private String valeur ;
 	
-	EnumCivilite(String etat){
+	 EnumCivilite(String etat){
 		valeur = etat;
 	}
 
